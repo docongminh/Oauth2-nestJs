@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { GoogleOauthGuard } from './google-oauth.guard';
 import { JwtAuthService } from '../jwt/jwt-auth.service';
 import { SESSION_COOKIE_KEY } from '../config/constants';
+import { User } from 'src/common/user.types';
 
 @Controller('auth/google')
 export class GoogleOauthController {
@@ -17,7 +18,7 @@ export class GoogleOauthController {
   @Get('redirect')
   @UseGuards(GoogleOauthGuard)
   async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
-    const { accessToken } = this.jwtAuthService.login(req.user);
+    const { accessToken } = this.jwtAuthService.login(req.user as User);
     res.cookie(SESSION_COOKIE_KEY, accessToken, {
       httpOnly: true,
       sameSite: 'lax',
