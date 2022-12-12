@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  database:
+    container_name: oauth-database
+    image: postgres:14.1
+    restart: unless-stopped
+    volumes:
+      - ./:/var/lib/postgres
+      - ./src/postgres/database:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - 5400:5432
+volumes:
+  database:
+    driver: local

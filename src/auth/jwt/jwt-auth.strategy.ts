@@ -1,8 +1,10 @@
-import { Strategy } from 'passport-jwt';
+import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { config } from 'dotenv';
 
+config();
 export type JwtPayload = { sub: number; username: string };
 
 @Injectable()
@@ -16,11 +18,10 @@ export class JwtAuthStrategy extends PassportStrategy(Strategy) {
       }
       return token;
     };
-
     super({
       jwtFromRequest: extractJwtFromCookie,
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('JWT_SECRET'),
+      secretOrKey: configService.get<string>(process.env.JWT_SECRET),
     });
   }
 

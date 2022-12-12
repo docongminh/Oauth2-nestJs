@@ -17,7 +17,10 @@ import { OrdersModule } from './orders/orders.module';
     TypeOrmModule.forRootAsync({
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        url: configService.get<string>('DATABASE_URL'),
+        host: 'localhost',
+        port: 5400,
+        username: 'root',
+        password: '123456',
         autoLoadEntities: true,
         ssl:
           configService.get<string>('NODE_ENV') === 'production'
