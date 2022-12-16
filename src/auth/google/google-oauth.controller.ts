@@ -10,7 +10,8 @@ export class GoogleOauthController {
 
   @Get()
   @UseGuards(GoogleOauthGuard)
-  async googleAuth(@Req() _req) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async googleAuth(@Req() req: Request) {
     // Guard redirects
   }
 

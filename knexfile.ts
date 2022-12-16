@@ -14,11 +14,10 @@ const config: { [key: string]: Knex.Config } = {
       max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations',
-      directory: 'src/database/migration',
+      directory: 'database/migration',
     },
     seeds: {
-      directory: 'src/database/seeds',
+      directory: 'database/seeds',
     },
   },
 
@@ -35,11 +34,10 @@ const config: { [key: string]: Knex.Config } = {
       max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations',
-      directory: 'src/database/migration',
+      directory: 'database/migration',
     },
     seeds: {
-      directory: 'src/database/seeds',
+      directory: 'database/seeds',
     },
   },
 };
